@@ -4,13 +4,15 @@ const hyperx = require('hyperx')
 const {getState, setupReducer, dispatch} = require('../store')
 const html = hyperx(m)
 
+const $editMessage = 'home/editMessage'
+
 setupReducer('home')
   .on('__INIT__', function () {
     return {
       message: 'Hello World!'
     }
   })
-  .on('home/editMessage', function (oldState, payload) {
+  .on($editMessage, function (oldState, payload) {
     return i.set(oldState, 'message', payload)
   })
   .create()
