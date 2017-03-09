@@ -1,12 +1,13 @@
 const m = require('mithril')
 const i = require('icepick')
 const hyperx = require('hyperx')
-const {getState, setupReducer, dispatch} = require('../store')
+const store = require('../store')
+
 const html = hyperx(m)
 
 const $editMessage = 'home/editMessage'
 
-setupReducer('home')
+store.setupReducer('home')
   .on('__INIT__', function () {
     return {
       message: 'Hello World!'
@@ -18,11 +19,11 @@ setupReducer('home')
   .create()
 
 function editMessage (message) {
-  dispatch('home/editMessage', message)
+  store.dispatch('home/editMessage', message)
 }
 
 function homeView () {
-  const state = getState()
+  const state = store.getState()
 
   return html`<div>
     <input

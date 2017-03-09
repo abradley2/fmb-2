@@ -3,23 +3,21 @@ global.window = Object.assign(
   require('mithril/test-utils/pushStateMock')()
 )
 
+const test = require('tape')
 const mq = require('mithril-query')
-const o = require('mithril/ospec/ospec')
 const home = require('../src/modules/home')
 const store = require('../src/store')
 
 store.init()
 
-o.spec('math', function () {
-  o('adition works', function () {
-    o(1 + 2).equals(3)
+test('home', function (t) {
+  t.equals(1 + 2, 3)
+
+  const output = mq(home)
+
+  t.doesNotThrow(function () {
+    output.should.contain('Hello World!')
   })
 
-  o('can render home', function () {
-    home.view = o.spy(home.view)
-    const output = mq(home)
-    o(
-      output.should.contain('Hello World!')
-    ).equals(2)
-  })
+  t.end()
 })
