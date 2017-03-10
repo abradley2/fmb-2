@@ -8,10 +8,10 @@ const mq = require('mithril-query')
 const home = require('../src/modules/home')
 const store = require('../src/store')
 
-store.init()
-
 test('renders', function (t) {
   t.plan(1)
+
+  store.init()
 
   const output = mq(home)
 
@@ -21,20 +21,21 @@ test('renders', function (t) {
 })
 
 test('edit message', function (t) {
-  let output
   t.plan(2)
 
-  output = mq(home)
+  store.init()
+
+  const outputBefore = mq(home)
 
   t.throws(function () {
-    output.should.contain('New Message!')
+    outputAfter.should.contain('New Message!')
   })
 
   store.dispatch('home/editMessage', 'New Message!')
 
-  output = mq(home)
+  const outputAfter = mq(home)
 
   t.doesNotThrow(function () {
-    output.should.contain('New Message!')
+    outputAfter.should.contain('New Message!')
   })
 })

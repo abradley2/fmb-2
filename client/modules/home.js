@@ -19,7 +19,7 @@ store.setupReducer('home')
   .create()
 
 function editMessage (message) {
-  store.dispatch('home/editMessage', message)
+  store.dispatch($editMessage, message)
 }
 
 function homeView () {
