@@ -8,3 +8,5 @@ instead use the store dispatches. The disadvantage is you are testing something
 _slightly_ less indicative of actual user-dom interaction. The advantage is your
 tests, while functional, are not so strongly tied to the dom and they won't break
 even as you make significant changes to the html during development.
+
+There is a added git-hook that runs a test prior to every commit.
