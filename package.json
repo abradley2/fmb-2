@@ -15,7 +15,8 @@
     "transform": [
       "sheetify/transform",
       "hyperxify",
-      "es2020"
+      "es2020",
+      "envify"
     ]
   },
   "dependencies": {
