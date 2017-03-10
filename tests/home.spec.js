@@ -5,8 +5,8 @@ global.window = Object.assign(
 
 const test = require('tape')
 const mq = require('mithril-query')
-const home = require('../src/modules/home')
-const store = require('../src/store')
+const home = require('../client/modules/home')
+const store = require('../client/store')
 
 test('renders', function (t) {
   t.plan(1)
@@ -28,7 +28,7 @@ test('edit message', function (t) {
   const outputBefore = mq(home)
 
   t.throws(function () {
-    outputAfter.should.contain('New Message!')
+    outputBefore.should.contain('New Message!')
   })
 
   store.dispatch('home/editMessage', 'New Message!')
